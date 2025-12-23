@@ -1,9 +1,9 @@
 #include <Servo.h>
 
-// ---------- SERVOS ----------
+// SERVOS
 Servo sAil, sEle, sRud, sThr, sCamPan, sCamTilt;
 
-// ---------- INPUT PINS ----------
+// INPUT PINS
 const byte IN_AIL  = 2;
 const byte IN_ELE  = 3;
 const byte IN_RUD  = 4;
@@ -11,7 +11,7 @@ const byte IN_THR  = 5;
 const byte IN_PAN  = 6;
 const byte IN_TILT = 7;
 
-// ---------- OUTPUT PINS ----------
+// OUTPUT PINS
 const byte OUT_AIL  = 8;
 const byte OUT_ELE  = 9;
 const byte OUT_RUD  = 10;
@@ -19,13 +19,13 @@ const byte OUT_THR  = 11;
 const byte OUT_PAN  = 12;
 const byte OUT_TILT = 13;
 
-// ---------- SIGNAL LIMITS ----------
+// SIGNAL LIMITS
 const int PWM_MIN = 1000;
 const int PWM_MAX = 2000;
 const int PWM_NEUTRAL = 1500;
 const int PWM_THR_CUT = 1000;
 
-// ---------- FAILSAFE ----------
+// FAILSAFE
 const unsigned long FAILSAFE_TIME = 500; // ms sin señal
 unsigned long lastSignalTime = 0;
 
@@ -47,7 +47,7 @@ void setup() {
 
   // Arranque seguro
   setFailsafe();
-  delay(3000); // tiempo típico de armado del ESC
+  delay(3000);
 }
 
 void loop() {
@@ -76,8 +76,7 @@ void loop() {
   }
 }
 
-// ---------- FUNCTIONS ----------
-
+// FUNCTIONS 
 int readPWM(byte pin) {
   return pulseIn(pin, HIGH, 25000);
 }
@@ -106,4 +105,5 @@ void setFailsafe() {
   sRud.writeMicroseconds(PWM_NEUTRAL);
   sCamPan.writeMicroseconds(PWM_NEUTRAL);
   sCamTilt.writeMicroseconds(PWM_NEUTRAL);
+
 }
