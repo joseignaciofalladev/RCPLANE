@@ -92,7 +92,7 @@ void writeControls(int ail, int ele, int rud, int thr, int pan, int tilt) {
   sRud.writeMicroseconds(constrain(rud, PWM_MIN, PWM_MAX));
   sThr.writeMicroseconds(constrain(thr, PWM_MIN, PWM_MAX));
 
-  // Cámara: si no hay head tracker, se centra
+  // Cámara: si no hay head tracker, se centra para evitar errores y la camara no nos permita ver la parte frontal
   sCamPan.writeMicroseconds(validPWM(pan) ? pan : PWM_NEUTRAL);
   sCamTilt.writeMicroseconds(validPWM(tilt) ? tilt : PWM_NEUTRAL);
 }
@@ -107,3 +107,4 @@ void setFailsafe() {
   sCamTilt.writeMicroseconds(PWM_NEUTRAL);
 
 }
+
